@@ -1,0 +1,164 @@
+//NAME:MAHI THAKRAR
+//PRN:24070123056
+//ENTC A3
+//EXPERIMENT-14
+
+//Accesing with private(shows error)
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    string address;
+
+public:
+    Person(string n, string a) {
+        name = n;
+        address = a;
+    }
+
+    void displayName() {
+        cout << "Name: " << name << endl;
+    }
+
+    void displayAddress() {
+        cout << "Address: " << address << endl;
+    }
+};
+
+class Employee {
+protected:
+    int id;
+
+private:
+    double salary;
+
+public:
+    Employee(int i, double s) {
+        id = i;
+        salary = s;
+    }
+
+    void displayId() {
+        cout << "ID: " << id << endl;
+    }
+
+    void displaySalary() {
+        cout << "Salary: " << salary << endl;
+    }
+};
+
+class Staff : public Person, public Employee {
+private:
+    string field;
+
+public:
+    Staff(string n, string a, int i, double s, string f) : Person(n, a), Employee(i, s) {
+        field = f;
+    }
+
+    void displayDetails() {
+        displayName();
+        displayAddress();
+        displayId();
+        displaySalary();
+        cout << "Field: " << field << endl;
+    }
+};
+
+int main() {
+    Staff staff("Shivangi Patel", "123 Main St", 1234, 50000.0, "DESIGN");
+    staff.displayDetails();
+    staff.salary;
+
+    return 0;
+}
+
+// Output:
+// ERROR!
+// /tmp/LmL0AqHZEH/main.cpp: In function 'int main()':
+// /tmp/LmL0AqHZEH/main.cpp:67:11: error: 'double Employee::salary' is private within this context
+//    67 |     staff.salary;
+//       |           ^~~~~~
+// /tmp/LmL0AqHZEH/main.cpp:29:12: note: declared private here
+//    29 |     double salary;
+//       |            ^~~~~~
+
+//With all the access specifier(not accessing private in main and hence it works)
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    string address;
+
+public:
+    Person(string n, string a) {
+        name = n;
+        address = a;
+    }
+
+    void displayName() {
+        cout << "Name: " << name << endl;
+    }
+
+    void displayAddress() {
+        cout << "Address: " << address << endl;
+    }
+};
+
+class Employee {
+protected:
+    int id;
+
+private:
+    double salary;
+
+public:
+    Employee(int i, double s) {
+        id = i;
+        salary = s;
+    }
+
+    void displayId() {
+        cout << "ID: " << id << endl;
+    }
+
+    void displaySalary() {
+        cout << "Salary: " << salary << endl;
+    }
+};
+
+class Staff : public Person, public Employee {
+private:
+    string field;
+
+public:
+    Staff(string n, string a, int i, double s, string f) : Person(n, a), Employee(i, s) {
+        field = f;
+    }
+
+    void displayDetails() {
+        displayName();
+        displayAddress();
+        displayId();
+        displaySalary();
+        cout << "Field: " << field << endl;
+    }
+};
+
+int main() {
+    Staff staff("Shivangi Patel", "123 Main St", 1234, 50000.0, "DESIGN");
+    staff.displayDetails();
+
+    return 0;
+}
+
+//Output:
+//Name: Shivangi Patel
+//Address: 123 Main St
+//ID: 1234
+//Salary: 50000
+//Field: DESIGN
