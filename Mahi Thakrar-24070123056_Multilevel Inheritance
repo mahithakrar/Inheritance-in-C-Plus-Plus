@@ -1,0 +1,48 @@
+//NAME:MAHI THAKRAR
+//PRN:24070123056
+//ENTC A3
+//EXPERIMENT-14
+
+#include <iostream>
+using namespace std;
+
+class Actor {
+public:
+    string name;
+    void displayName() {
+        cout << "Name: " << name << endl;
+    }
+};
+
+class BollywoodActor : public Actor {
+public:
+    int debutYear;
+    void displayDebutYear() {
+        cout << "Debut Year: " << debutYear << endl;
+    }
+};
+
+class AwardWinningActor : public BollywoodActor {
+public:
+    int awardsWon;
+    void displayDetails() {
+        displayName();
+        displayDebutYear();
+        cout << "Awards Won: " << awardsWon << endl;
+    }
+};
+
+int main() {
+    AwardWinningActor actor;
+    actor.name = "Alia Bhatt";
+    actor.debutYear = 2012;
+    actor.awardsWon = 60;
+    actor.displayDetails();
+
+    return 0;
+}
+
+//Output:
+//Name: Alia Bhatt
+//Debut Year: 2012
+//Awards Won: 60
