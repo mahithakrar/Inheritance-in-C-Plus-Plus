@@ -1,0 +1,34 @@
+//NAME:MAHI THAKRAR
+//PRN:24070123056
+//ENTC A3
+//EXPERIMENT-14
+
+#include <iostream>
+using namespace std;
+
+class Resident{
+    public:
+    string country="India";
+    
+    void place(){
+        cout<<"Pune\n";
+    }
+};
+
+class Work:public Resident{
+    public:
+    string college="Symbiosis Institute of Technology";
+};
+
+int main() {
+    Work w;
+    w.place();
+    cout<<w.country<<"\n"<<w.college;
+    
+    return 0;
+}
+
+//Output:
+//Pune
+//India
+//Symbiosis Institute of Technology
