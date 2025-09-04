@@ -1,0 +1,59 @@
+//NAME:MAHI THAKRAR
+//PRN:24070123056
+//ENTC A3
+//EXPERIMENT-14
+
+#include <iostream>
+using namespace std;
+
+class Person{
+    public:
+    string name;
+    
+    void displayName(){
+        cout<<"Name:"<<name<<endl;
+    }
+};
+
+class Employee{
+    public:
+    int id_no;
+    double salary;
+    
+    void displayId(){
+        cout<<"Id:"<<id_no<<endl;
+    }
+    
+    void displaySalary(){
+        cout<<"Salary:"<<salary<<endl;
+    }
+};
+
+class Staff:public Person,public Employee{
+    public:
+    string field;
+    
+    void displayDetails(){
+        displayName();
+        displayId();
+        displaySalary();
+        cout<<"Field:"<<field<<endl;
+    }
+};
+
+int main() {
+    Staff staff;
+    staff.name = "Shivangi Patel";
+    staff.id_no = 1234;
+    staff.salary = 50000;
+    staff.field="DESIGN";
+    staff.displayDetails();
+
+    return 0;
+}
+
+//Output:
+//Name:Shivangi Patel
+//Id:1234
+//Salary:50000
+//Field:DESIGN
